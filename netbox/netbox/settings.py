@@ -217,6 +217,22 @@ DATABASES = {
     'default': DATABASE,
 }
 
+# If you need to connect to other databases you can define them in your configuration.py like:
+#
+# OTHER_DATABASES = {
+#   'otherdb' = {
+#      'NAME': 'myotherdb',
+#      'ENGINE': 'django.db.backends.postgresql',
+#      'USER': 'myuser',
+#      'PASSWORD': 'mypass'
+#   }
+# }
+#
+# Later you can use this connection for your plugins' models like:
+# MyModel.objects.using('otherdb')
+#
+if 'OTHER_DATABASES' in vars() or 'OTHER_DATABASES' in globals():
+    DATABASES.update(OTHER_DATABASES)
 
 #
 # Storage backend
